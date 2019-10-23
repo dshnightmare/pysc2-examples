@@ -137,7 +137,7 @@ class Model(object):
 
     #vf_mask[0:nscripts * nsteps] = R[0:nscripts * nsteps]
 
-    vf_loss = tf.reduce_mean(losses.mean_squared_error(vf_masked, TD_TARGET))
+    vf_loss = losses.mean_squared_error(vf_masked, TD_TARGET)
     entropy_a = tf.reduce_mean(cat_entropy(train_model.pi))
     entropy_xy0 = tf.reduce_mean(cat_entropy(train_model.pi_xy0))
     entropy_xy1 = tf.reduce_mean(cat_entropy(train_model.pi_xy1))
