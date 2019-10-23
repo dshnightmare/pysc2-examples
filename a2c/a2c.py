@@ -129,11 +129,11 @@ class Model(object):
 
     vf_r = tf.concat(
         [
-            tf.ones([nscripts * nsteps, 1]),
-            tf.zeros([(nprocs - nscripts) * nsteps, 1])
+            tf.ones([nscripts * nsteps]),
+            tf.zeros([(nprocs - nscripts) * nsteps])
         ],
         axis=0) * TD_TARGET
-    vf_masked = vf_ * script_mask + vf_r
+    vf_masked = vf_ * tf.squeeze(script_mask) + vf_r
 
     #vf_mask[0:nscripts * nsteps] = R[0:nscripts * nsteps]
 
